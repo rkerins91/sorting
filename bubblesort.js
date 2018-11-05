@@ -24,8 +24,6 @@
 //   return array;
 // }
 
-
-
 // let input = [9, 8, 11, 11, 13, 14, 15, 16, 4];
 
 // console.log("unsorted :: ", input);
@@ -36,12 +34,14 @@ function bubbleSort(array) {
     checkLength = array.length - 1,
     counter = 0;
 
+  // console.log("\nOriginal array :: ", array);
+  // debugger;
   while (sorting) {
     counter++;
     sorting = false;
     let tempArray;
-    for (let i = 0; i < checkLength; i++) {
-      if (array[i] > array[i + 1]){
+    for (let i = 0; i < checkLength; i = i + 2) {
+      if (array[i] > array[i + 1]) {
         sorting = true;
         tempArray = swap(array[i], array[i + 1]);
         array[i] = tempArray[0];
@@ -50,16 +50,11 @@ function bubbleSort(array) {
     }
     checkLength--;
   }
-  console.log("counted :: ", counter);
+  // console.log("counted :: ", counter);
+  // console.log("Sorted :: ", array);
   return array;
 }
 
-function swap(numOne, numTwo) {
-  let temp = numOne;
-  numOne = numTwo;
-  numTwo = temp;
-  return [numOne, numTwo];
-  counter++;
+function swap(a, b) {
+  return [b, a];
 }
-
-
