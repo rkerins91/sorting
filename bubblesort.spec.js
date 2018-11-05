@@ -5,18 +5,28 @@
 //   3.
 // */
 
-// describe("Bubble Sort", function() {
-//   it("handles an empty array", function() {
-//     expect(bubbleSort([])).toEqual([]);
-//   });
+describe("Bubble Sort", function() {
 
-//   it("returns sorted array for single item", function() {
-//     expect(bubbleSort([6])).toEqual([6]);
-//   });
-//   it("returns sorted array for multiple items", function() {
-//     let input = [6, 5, 9, 13, 8, 84, 65],
-//       answer = [5, 6, 8, 9, 13, 65, 84];
+  beforeAll(function (){
+      spyOn(window, 'swap').and.callThrough();
+  });
 
-//     expect(bubbleSort(input)).toEqual(answer);
-//   });
-// });
+  it("handles an empty array", function() {
+    expect(bubbleSort([])).toEqual([]);
+  });
+
+  it("returns sorted array for single item", function() {
+    expect(bubbleSort([6])).toEqual([6]);
+  });
+
+  it("returns sorted array for multiple items", function() {
+    let input = [6, 5, 9, 13, 8, 84, 65],
+    answer = [5, 6, 8, 9, 13, 65, 84];
+    expect(bubbleSort(input)).toEqual(answer);
+  });
+
+  it("calls swap correct number of times", function (){
+    window.swap();
+    expect(window.swap.calls.count()).toEqual(3);
+  });
+});
