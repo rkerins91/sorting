@@ -7,21 +7,31 @@ function mergeSort(array) {
 function merge(array) {
   // if (array.length === tempArr.length) {
   //   return tempArr;
-  // } else {
-
-  //   }
-  // }
-
-  if (typeof array[0] === Number) {
-    if (array.length > 1) {
-      if (array[0] < array[1]) {
-        array = swap(array[0], array[1]);
+  // } 
+    let returnArr = array;
+    // if (typeof array[0] === Number) {
+    //   return returnArr;
+    // }
+    if (typeof array[0][0] === Number) {
+      let i = 0;
+      let j = 0;
+      while (returnArr.length < array[0].length + array[1].length) {
+        if (array[0][i] < array[1][j]) {
+          returnArr.push(array[0][i]);
+          i++;
+        } else {
+          returnArr.push(array[1][j]);
+          j++;
+        }
       }
+    } else {
+      return merge([array[0], array[1]])
     }
+  
+    return returnArr;
+
   }
 
-  return tempArr;
-}
 
 function split(wholeArray) {
   /* your code here to define the firstHalf and secondHalf arrays */
@@ -44,4 +54,4 @@ function swap(a, b) {
 let input = [100, 6, 5, 9, 13, 8, 84, 65],
   answer = [5, 6, 8, 9, 13, 65, 84, 100, 101];
 
-console.log(merge(answer));
+console.log(merge.apply(split(input)));
