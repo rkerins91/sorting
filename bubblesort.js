@@ -1,60 +1,18 @@
-// /* bubble sort */
-
-// function bubbleSort(array) {
-//   let sorting = true,
-//     checkLength = array.length - 1,
-//     counter = 0;
-
-//   while (sorting) {
-//     counter++;
-//     sorting = false;
-//     for (let i = 0; i < checkLength; i++) {
-//       let temp;
-//       if (array[i] > array[i + 1]) {
-//         temp = array[i];
-//         array[i] = array[i + 1];
-//         array[i + 1] = temp;
-//         sorting = true;
-//       }
-//     }
-//     checkLength--;
-//   }
-
-//   //console.log("counted :: ", counter);
-//   return array;
-// }
-
-// let input = [9, 8, 11, 11, 13, 14, 15, 16, 4];
-
-// console.log("unsorted :: ", input);
-// console.log(bubbleSort(input));
-
 function bubbleSort(array) {
-  let sorting = true,
-    checkLength = array.length - 1,
-    counter = 0;
+  if (array.length < 2) {return array}
+  for (let i = 0; i < array.length; i++) {
+          /* your code here */
+      for (let j = 0; j < array.length-i; j++)
+          if (array[j] > array[j+1]) {
+              swap(array, j, j+1)
+          }
 
-  // console.log("\nOriginal array :: ", array);
-  // debugger;
-  while (sorting) {
-    counter++;
-    sorting = false;
-    let tempArray;
-    for (let i = 0; i < checkLength; i = i + 2) {
-      if (array[i] > array[i + 1]) {
-        sorting = true;
-        tempArray = swap(array[i], array[i + 1]);
-        array[i] = tempArray[0];
-        array[i + 1] = tempArray[1];
-      }
-    }
-    checkLength--;
-  }
-  // console.log("counted :: ", counter);
-  // console.log("Sorted :: ", array);
-  return array;
+}
+return array;
 }
 
-function swap(a, b) {
-  return [b, a];
+function swap (arr, indexA, indexB) {
+  const holder = arr[indexA];
+  arr[indexA] = arr[indexB];
+  arr[indexB] = holder;
 }

@@ -1,26 +1,24 @@
-describe("Bubble Sort", function() {
-  beforeAll(function() {
-    spyOn(window, "swap").and.callThrough();
+describe('Bubble Sort', function(){
+  it('handles an empty array', function(){
+  testArr = [];
+    expect( bubbleSort(testArr) ).toEqual( [] );
   });
+  it('handles an array of length 1', function(){
+      testArr = [2];
 
-  it("handles an empty array", function() {
-    expect(bubbleSort([])).toEqual([]);
+    expect( bubbleSort([2]) ).toEqual( [2] );
   });
-
-  it("returns sorted array for single item", function() {
-    expect(bubbleSort([6])).toEqual([6]);
+  it('handles an array of length 2', function(){
+          testArr = [5, 3];
+        expect( bubbleSort(testArr) ).toEqual( [3, 5] );
+      });
+  it('handles an array of many elements', function(){
+      testArr = [45, 31, 22, 11, -5, 9, 0, 1000];
+    expect( bubbleSort(testArr) ).toEqual( [-5, 0, 9, 11, 22, 31, 45, 1000] ); 
   });
-
-  it("returns sorted array for multiple items", function() {
-    let input = [100, 6, 5, 9, 13, 8, 84, 65],
-      answer = [5, 6, 8, 9, 13, 65, 84, 100];
-    // let input = [13, 8],
-    //   answer = [8, 13];
-    expect(bubbleSort(input)).toEqual(answer);
-  });
-
-  it("calls swap correct number of times", function() {
-    window.swap();
-    expect(window.swap.calls.count()).toEqual(2);
-  });
+  it('always takes less than n² swaps', function () {
+      spyOn(window, 'swap').and.callThrough(); 
+      testArr = [45, 31, 22, 11, -5, 9, 0, 1000];
+      expect(window.swap.calls.count() <= testArr.length*testArr.length).toBe(true);
+    });
 });
