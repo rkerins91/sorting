@@ -36,7 +36,3 @@ function split(wholeArray) {
 
   return [left, right];
 }
-
-
-
-console.log(mergeSort([4, 5, 7, 9, 22, 1, 3, 3, 5, 53, 64]));
